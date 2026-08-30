@@ -42,25 +42,7 @@ backend/
    routes let an operator (or the frontend) start/reset the demo scenario
    and confirm a what-if intervention.
 
-## Running it
 
-```bash
-cd backend
-python -m venv .venv && source .venv/bin/activate   # optional but recommended
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
-
-The service is now available at `http://localhost:8000`:
-
-| Method | Route                          | Purpose                                    |
-|--------|---------------------------------|---------------------------------------------|
-| GET    | `/api/zones`                    | Static zone metadata                        |
-| POST   | `/api/scenario/start`           | Start the 60-second demo scenario           |
-| POST   | `/api/scenario/reset`           | Reset all zones to baseline                 |
-| POST   | `/api/whatif` `{action}`        | Confirm an intervention (`open_gate_c` \| `trigger_pa`) |
-| GET    | `/api/calibration/estimate`     | Demo the signal → occupancy conversion      |
-| WS     | `/ws/telemetry`                 | Live telemetry stream, one frame per 500ms  |
 
 ### Telemetry frame shape
 
@@ -90,25 +72,3 @@ The service is now available at `http://localhost:8000`:
   }
 }
 ```
-
-## Connecting the frontend to this backend
-
-The deployed prototype (on Vercel) runs an in-browser port of this exact
-same logic (`frontend/src/lib/engine.js`) so it works with zero backend —
-that's what makes it deployable as a static site. If you'd rather run the
-dashboard against this *real* Python service instead:
-
-1. Run this backend locally (above).
-2. In `frontend/`, set `VITE_WS_URL=ws://localhost:8000/ws/telemetry` in a
-   `.env.local` file.
-3. Swap `useSimulation` for a WebSocket-based hook that reads from that URL
-   (the telemetry frame shape above matches what `useSimulation` already
-   produces, so this is a drop-in swap).
-
-## Notes on the "why not just open every gate" logic
-
-`simulator.py`'s `apply_whatif()` only ever opens the *one* alternate route
-the risk engine flagged — this mirrors the real-world argument in the pitch:
-opening every gate all the time adds staffing/security cost and can create
-new converging-crowd risk at internal choke points, so the system always
-recommends the smallest targeted intervention, not a blanket response.
