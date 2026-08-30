@@ -4,7 +4,8 @@
 
 Built for Build with Bharat 2.0 (National Level Hackathon) by **Sorcerers of Code**.
 
-> Team: Arnav Aggarwal (Team Leader), Akshat Tyagi, Inshuk Sharma, Trihan Walecha
+> Team: Arnav Aggarwal (Team Leader), Akshat Tyagi(jims) , Nakul Jain, Aradhye Bhushan , Trihan Walecha
+
 > College: GGSIPU (Guru Gobind Singh Indraprastha University)
 
 ---
