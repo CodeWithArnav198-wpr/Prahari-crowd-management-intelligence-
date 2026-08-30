@@ -59,55 +59,10 @@ tell a consistent story — the frontend README explains how to point the
 dashboard at the real backend once you're ready to wire in actual RF
 hardware instead of the built-in simulation.
 
-## Quick start
-
-**See the prototype running in your browser in under a minute:**
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-**Run the real backend** (optional — the frontend works standalone):
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
 
 Full instructions, API reference, and architecture notes are in
 [`backend/README.md`](backend/README.md) and
 [`frontend/README.md`](frontend/README.md).
-
-## Deploying the live demo link (for your pitch deck)
-
-The frontend is a static Vite app — no server required — so it deploys to
-Vercel in a couple of minutes. Full step-by-step instructions (dashboard and
-CLI options) are in [`frontend/README.md` → Deploying to Vercel](frontend/README.md#deploying-to-vercel).
-
-Short version:
-1. Push this repo to GitHub (see below).
-2. [vercel.com/new](https://vercel.com/new) → Import the repo → set **Root
-   Directory** to `frontend` → Deploy.
-3. Put the resulting `https://….vercel.app` URL in your deck's demo-link
-   slide.
-
-## Pushing this repo to GitHub
-
-```bash
-cd prahari
-git init
-git add .
-git commit -m "Initial commit: Prahari crowd flow intelligence prototype"
-git branch -M main
-git remote add origin https://github.com/<your-username>/prahari.git
-git push -u origin main
-```
-
-(Create the empty repo on GitHub first, then run the commands above from
-inside this project folder.)
 
 ## Tech stack
 
